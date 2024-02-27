@@ -1,0 +1,290 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Documents',
+        typeNamePlural: 'Documents',
+        title: {
+            type: #STANDARD, value: 'IssueNo'
+        }
+    }
+}
+annotate view ZMCDAP_C_INVOICE with
+{
+
+  @UI.facet: [
+    {
+      type: #COLLECTION,
+      id: 'GeneralInfo',
+      position: 10,
+      label: 'General Information'
+    },
+    {
+      id: 'BasicDataSH',
+      label: 'BasicData',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt001'
+    },
+    {
+      id: 'DateSH',
+      label: 'Date',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt002'
+    },
+    {
+      id: 'AmountsSH',
+      label: 'Amounts',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt003'
+    },
+    {
+      id: 'BuyerDataSH',
+      label: 'Buyer Data',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt004'
+    },
+    {
+      id: 'SupplierDataSH',
+      label: 'Supplier Data',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt005'
+    },
+    {
+      id: 'LineItemsSH',
+      label: 'Line Item',
+      parentId: 'GeneralInfo',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt006'
+    },
+
+    {
+      id: 'LineItems',
+      purpose: #STANDARD,
+      type: #LINEITEM_REFERENCE,
+      label: 'Line Items',
+      position: 20,
+      targetElement: '_Items'
+    }
+
+  //    {
+  //      label: 'History Information',
+  //      id: 'HistoryInfo',
+  //      type: #COLLECTION,
+  //      position: 30
+  //    },
+  //    {
+  //      id: 'Generation',
+  //      type: #IDENTIFICATION_REFERENCE,
+  //      purpose: #STANDARD,
+  //      label: 'Generation',
+  //      parentId: 'HistoryInfo',
+  //      position: 10,
+  //      targetQualifier: 'idt002'
+  //    },
+  //    {
+  //      id: 'Modification',
+  //      type: #IDENTIFICATION_REFERENCE,
+  //      purpose: #STANDARD,
+  //      label: 'Modification',
+  //      parentId: 'HistoryInfo',
+  //      position: 20,
+  //      targetQualifier: 'idt003'
+  //    }
+  ]
+
+
+
+  @UI.hidden: true
+  ID;
+  
+  @UI.hidden: true
+  ClientKey;
+  
+  @UI.hidden: true
+  EntKey;
+  
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 10 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  BizPlace;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 50 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  BillType;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 70 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt001' } ]
+  TaxClsf;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 190 }]
+  @UI.identification: [ { position: 70, qualifier: 'idt001' } ]
+  TaxKnd;
+
+  @UI.identification: [ { position: 90, qualifier: 'idt001' } ]
+  IsnType;
+
+  @UI.identification: [ { position: 110, qualifier: 'idt001' } ]
+  DemandGb;
+
+  @UI.identification: [ { position: 130, qualifier: 'idt001' } ]
+  Bigo;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 150 }]
+  @UI.identification: [ { position: 150, qualifier: 'idt001' } ]
+  IssueNo;
+
+
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt002' } ]
+  MakeDt;
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt002' } ]
+  IssueDt;
+
+
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt002' } ]
+  SendDt;
+
+
+
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  SupAmt;
+
+  @UI.identification: [ { position: 30, qualifier: 'idt003' } ]
+  TaxAmt;
+
+  @UI.identification: [ { position: 50, qualifier: 'idt003' } ]
+  TotAmt;
+
+
+
+  @UI.identification: [ { position: 10, qualifier: 'idt004' } ]
+  ByrCorpNm;
+
+  @UI.identification: [ { position: 30, qualifier: 'idt004' } ]
+  ByrBizNo;
+
+  @UI.identification: [ { position: 50, qualifier: 'idt004' } ]
+  ByrBizSubNo;
+
+  @UI.identification: [ { position: 70, qualifier: 'idt004' } ]
+  ByrRepNm;
+
+  @UI.identification: [ { position: 90, qualifier: 'idt004' } ]
+  ByrAddress;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 110 }]
+  @UI.identification: [ { position: 110, qualifier: 'idt004' } ]
+  ByrEmail1;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 110 }]
+  @UI.identification: [ { position: 130, qualifier: 'idt004' } ]
+  ByrEmail2;
+
+
+
+  @UI.identification: [ { position: 10, qualifier: 'idt005' } ]
+  SupCorpNm;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 90 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt005' } ]
+  SupBizNo;
+
+  @UI.identification: [ { position: 50, qualifier: 'idt005' } ]
+  SupBizSubNo;
+
+  @UI.identification: [ { position: 70, qualifier: 'idt005' } ]
+  SupRepNm;
+
+  @UI.identification: [ { position: 90, qualifier: 'idt005' } ]
+  SupAddress;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 130 }]
+  @UI.identification: [ { position: 110, qualifier: 'idt005' } ]
+  SupEmail;
+
+
+
+  @UI.identification: [ { position: 10, qualifier: 'idt006' } ]
+  ItemDt;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.selectionField: [{ position: 170 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt006' } ]
+  ItemNm;
+
+  @UI.identification: [ { position: 70, qualifier: 'idt006' } ]
+  ItemStd;
+
+  @UI.identification: [ { position: 50, qualifier: 'idt006' } ]
+  ItemQty;
+
+  @UI.identification: [ { position: 90, qualifier: 'idt006' } ]
+  ItemUnt;
+
+  @UI.identification: [ { position: 110, qualifier: 'idt006' } ]
+  ItemSupAmt;
+
+  @UI.identification: [ { position: 130, qualifier: 'idt006' } ]
+  ItemTaxAmt;
+
+  @UI.identification: [ { position: 50, qualifier: 'idt006' } ]
+  ItemBigo;
+}

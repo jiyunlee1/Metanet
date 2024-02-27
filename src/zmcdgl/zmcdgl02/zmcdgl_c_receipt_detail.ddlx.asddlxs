@@ -1,0 +1,36 @@
+@Metadata.layer: #CORE
+annotate view ZMCDGL_C_RECEIPT_DETAIL with
+{
+  @UI.hidden: true
+  ID;
+
+  @UI.hidden: true
+  HeaderID;
+
+  @UI.lineItem: [{ position: 10 }]
+  DocDateR;
+
+  @UI.lineItem: [{ position: 90 }]
+  SendBank;
+
+  @UI.lineItem: [{ position: 50 }]
+  Sender;
+
+  @UI.lineItem: [{ position: 110 }]
+  PostingDate;
+
+  @UI.lineItem: [{ position: 30 }]
+  Description;
+
+  @UI.lineItem: [{ position: 70 }]
+  AmountInTransactionCurrency;
+  
+  @UI.lineItem: [{position: 130, type: #WITH_URL, url: 'JournalUrl'}]
+  JournalEntry;
+  
+  @UI.hidden: true
+  JournalUrl;
+  
+  @UI.lineItem: [{ position: 150 }]
+  IsReversed;
+}

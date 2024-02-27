@@ -1,0 +1,12 @@
+unmanaged implementation in class zbp_mcdli_u_reg_re_condition unique;
+//strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZMCDLI_U_REG_RE_CONDITION //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  static function valid_check parameter zmcdli_a_condition_json_02 result [0..*] zmcdli_a_condition_err_03;
+  static action create_condition parameter zmcdli_a_condition_json_02 result [0..*] zmcdli_a_condition_err_04;
+}

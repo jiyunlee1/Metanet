@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] 전표 사용 계정 관리'
+define service ZMCDAR_C_DOC_ACCT_M_UI {
+  expose ZMCDAR_C_DOC_ACCT as DocAcct;
+}

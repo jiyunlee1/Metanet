@@ -1,0 +1,20 @@
+CLASS zmcdap_i_comp_invoice_query DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
+
+  PUBLIC SECTION.
+
+    INTERFACES if_rap_query_provider .
+  PROTECTED SECTION.
+  PRIVATE SECTION.
+ENDCLASS.
+
+
+
+CLASS ZMCDAP_I_COMP_INVOICE_QUERY IMPLEMENTATION.
+
+
+  METHOD if_rap_query_provider~select.
+  ENDMETHOD.
+ENDCLASS.

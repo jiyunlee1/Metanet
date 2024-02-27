@@ -1,0 +1,48 @@
+@Metadata.layer: #CORE
+annotate view ZMCDGL_C_SWEEP_DETAIL with
+{
+  @UI.hidden: true
+  ID;
+
+  @UI.hidden: true
+  HeaderID;
+
+  @UI.lineItem: [{ position: 10 }]
+  DocDateS;
+
+  @UI.lineItem: [{ position: 50, cssDefault:{width: '8rem'} }]
+  DebitBank;
+
+  @UI.lineItem: [{ position: 70, cssDefault:{width: '8rem'} }]
+  DebitAccount;
+
+  @UI.lineItem: [{ position: 90, cssDefault:{width: '6rem'} }]
+  DebitGL;
+  
+  @UI.lineItem: [{ position: 100, cssDefault:{width: '6rem'} }]
+  HouseDebitGL;
+
+  @UI.lineItem: [{ position: 130, cssDefault:{width: '8rem'} }]
+  Fee;
+
+  @UI.lineItem: [{ position: 170 }]
+  PostingDate;
+
+  @UI.lineItem: [{ position: 30, cssDefault:{width: '15rem'} }]
+  Description;
+
+  @UI.lineItem: [{ position: 110, cssDefault:{width: '10rem'} }]
+  AmountInTransactionCurrency;
+
+  @UI.lineItem: [{ position: 150, cssDefault:{width: '10rem'} }]
+  Total;
+  
+  @UI.lineItem: [{position: 190, type: #WITH_URL, url: 'JournalUrl'}]
+  JournalEntry;
+  
+  @UI.hidden: true
+  JournalUrl;
+  
+  @UI.lineItem: [{ position: 210 }]
+  IsReversed;
+}

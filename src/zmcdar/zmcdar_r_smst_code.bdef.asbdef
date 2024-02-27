@@ -1,0 +1,51 @@
+managed implementation in class zbp_mcdar_r_smst_code unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_SMST_CODE alias SmartStore
+persistent table zmcdtar0080
+draft table zmcddar0080
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+
+  field ( readonly : update, numbering : managed ) Id;
+  field ( mandatory ) Account, Lineuse, SmartStore;
+  field ( readonly ) LineUseText, LineUseState, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  //  Excel
+//  static function validation_check parameter zmcdar_a_imp_json_13 result [0..*] zmcdar_a_exp_err_13;
+  static function excel_validation parameter ZMCDCM_A_EXCEL_IMP result [0..*] zmcdar_a_excel_return_13;
+
+  static function validation_check parameter zmcdar_a_imp_json_13 result [0..*] zmcdar_a_exp_err_13;
+  static function validation_excel parameter ZMCDAR_A_IMP_EXCEL result [0..*] zmcdar_a_exp_err_13;
+
+  validation validateData on save { create; update; field Account, Lineuse, SmartStore; }
+
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+
+  mapping for zmcdtar0080
+    {
+      Id                 = id;
+      Account            = account;
+      Lineuse            = lineuse;
+      SmartStore         = smart_store;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

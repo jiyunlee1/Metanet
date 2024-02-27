@@ -1,0 +1,90 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Define Calculate Cost Sale Account',
+    typeNamePlural: 'Items',
+    title: {
+        value: 'Account'
+    }
+}
+annotate view ZMCDAR_C_SALES_ACCT with
+{
+  @UI.facet: [{
+        type: #IDENTIFICATION_REFERENCE,
+        position: 10,
+        targetQualifier: 'idt001',
+        label: 'General Information'
+     },
+     {
+        label: 'History Information',
+        id: 'HistoryInfo',
+        type: #COLLECTION,
+        position: 30
+      },
+      {
+        id: 'Generation',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        label: 'Generation',
+        parentId: 'HistoryInfo',
+        position: 10,
+        targetQualifier: 'idt002'
+      },
+      {
+        id: 'Modification',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        label: 'Modification',
+        parentId: 'HistoryInfo',
+        position: 20,
+        targetQualifier: 'idt003'
+      }]
+
+  @UI.hidden: true
+  ID;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{ position : 5 }]
+  @UI.identification: [ { position: 5, qualifier: 'idt001' } ]
+  Company;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position : 10 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  CostType;
+
+  @UI.lineItem: [{ position: 35 }]
+  @UI.selectionField: [{ position : 15 }]
+  @UI.identification: [ { position: 15, qualifier: 'idt001' } ]
+  CostcenterType;
+
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [ { position: 20, qualifier: 'idt001' } ]
+  Account;
+
+  @UI.lineItem: [{ position: 65 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  AccountNM;
+
+  @UI.lineItem: [{ position: 85 }]
+  @UI.identification: [ { position: 5, qualifier: 'idt002' } ]
+  CreatedBy;
+
+  @UI.lineItem: [{ position: 95 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt002' } ]
+  CreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.lineItem: [{ position: 105 }]
+  @UI.identification: [ { position: 5, qualifier: 'idt003' } ]
+  LastChangedAt;
+
+  @UI.lineItem: [{ position: 115 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  LastChangedBy;
+
+}

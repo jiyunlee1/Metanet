@@ -1,0 +1,110 @@
+managed implementation in class zbp_mcdap_r_invoice unique;
+strict ( 2 );
+
+define behavior for ZMCDAP_R_INVOICE alias Invoice
+persistent table zmcdtap0010
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly : update, numbering : managed ) ID;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  mapping for zmcdtap0010
+    {
+      ID                 = ID;
+      BizPlace           = BIZ_PLACE;
+      IssueNo            = ISSUE_NO;
+      MakeDt             = MAKE_DT;
+      ByrBizNo           = BYR_BIZ_NO;
+      ClientKey          = CLIENT_KEY;
+      EntKey             = ENT_KEY;
+      BillType           = BILL_TYPE;
+      IssueDt            = ISSUE_DT;
+      SendDt             = SEND_DT;
+      SupBizNo           = SUP_BIZ_NO;
+      SupBizSubNo        = SUP_BIZ_SUB_NO;
+      SupCorpNm          = SUP_CORP_NM;
+      SupRepNm           = SUP_REP_NM;
+      SupAddress         = SUP_ADDRESS;
+      ByrBizSubNo        = BYR_BIZ_SUB_NO;
+      ByrCorpNm          = BYR_CORP_NM;
+      ByrRepNm           = BYR_REP_NM;
+      ByrAddress         = BYR_ADDRESS;
+      TotAmt             = TOT_AMT;
+      SupAmt             = SUP_AMT;
+      TaxAmt             = TAX_AMT;
+      TaxClsf            = TAX_CLSF;
+      TaxKnd             = TAX_KND;
+      IsnType            = ISN_TYPE;
+      Bigo               = BIGO;
+      DemandGb           = DEMAND_GB;
+      SupEmail           = SUP_EMAIL;
+      ByrEmail1          = BYR_EMAIL1;
+      ByrEmail2          = BYR_EMAIL2;
+      ItemDt             = ITEM_DT;
+      ItemNm             = ITEM_NM;
+      ItemStd            = ITEM_STD;
+      ItemQty            = ITEM_QTY;
+      ItemUnt            = ITEM_UNT;
+      ItemSupAmt         = ITEM_SUP_AMT;
+      ItemTaxAmt         = ITEM_TAX_AMT;
+      ItemBigo           = ITEM_BIGO;
+      Currency           = CURRENCY;
+      CstnBizNO          = CSTN_BIZ_NO;
+      CstnCorpNm         = CSTN_CORP_NM;
+      ItemState          = ITEM_STATE;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+    }
+  association _Items { create; }
+}
+
+define behavior for ZMCDAP_R_INVOICE_ITEM alias InvoiceItems
+persistent table zmcdtap0020
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly : update, numbering : managed ) ID;
+  field ( readonly ) HeaderID, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  mapping for zmcdtap0020
+    {
+      ID                 = ID;
+      HeaderID           = HEADER_ID;
+      BizPlace           = BIZ_PLACE;
+      IssueNo            = ISSUE_NO;
+      ClientKey          = CLIENT_KEY;
+      EntKey             = ENT_KEY;
+      ItemNo             = ITEM_NO;
+      SupBizNo           = SUP_BIZ_NO;
+      ByrBizNo           = BYR_BIZ_NO;
+      ItemDt             = ITEM_DT;
+      ItemNm             = ITEM_NM;
+      ItemStd            = ITEM_STD;
+      ItemQty            = ITEM_QTY;
+      ItemUnt            = ITEM_UNT;
+      ItemSupAmt         = ITEM_SUP_AMT;
+      ItemTaxAmt         = ITEM_TAX_AMT;
+      ItemBigo           = ITEM_BIGO;
+      Currency           = CURRENCY;
+      CreatedBy          = created_by;
+      CreatedAt          = created_at;
+      LocalLastChangedBy = local_last_changed_by;
+      LocalLastChangedAt = local_last_changed_at;
+      LastChangedAt      = last_changed_at;
+      LastChangedBy      = last_changed_by;
+    }
+  association _Header;
+}

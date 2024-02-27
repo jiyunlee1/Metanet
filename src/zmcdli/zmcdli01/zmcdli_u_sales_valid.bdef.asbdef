@@ -1,0 +1,11 @@
+unmanaged implementation in class zbp_mcdli_u_sales_valid unique;
+//strict ( 1 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZMCDLI_U_SALES_VALID alias SalesValid
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  static action valid_check parameter ZMCDLI_A_SALES_JSON_01 result [0..*] ZMCDLI_A_SALES_ERR_01;
+}

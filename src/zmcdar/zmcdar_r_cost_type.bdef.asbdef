@@ -1,0 +1,52 @@
+
+managed implementation in class zbp_mcdar_r_cost_type unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_COST_TYPE alias CostType
+persistent table zmcdtar0010
+draft table zmcddar0010
+lock master total etag LocalLastChangedAt
+//lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  draft action Edit;
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+
+  //Custom Action
+
+  //Feature Control
+  field ( readonly : update, numbering : managed ) id;
+  field ( mandatory ) CostType, CostTypeNM;
+  field ( readonly ) Company, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  //Validation
+  validation validateData on save { create; update; field Company, CostType, CostTypeNM; }
+
+  //Determination
+  determination determinOnModify on modify { create; update; }
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+
+  mapping for zmcdtar0010
+    {
+      Id                 = id;
+      Company            = COMPANY;
+      CostType           = COST_TYPE;
+      CostTypeNM         = TYPE_NAME;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

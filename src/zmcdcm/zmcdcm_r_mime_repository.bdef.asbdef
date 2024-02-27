@@ -1,0 +1,45 @@
+managed implementation in class zbp_mcdcm_r_mime_repository unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDCM_R_MIME_REPOSITORY alias MimeRep
+persistent table zmcdtcm0010
+draft table zmcddcm0010
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  field ( readonly, numbering : managed ) ID;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  validation validationOnSave on save { create; }
+
+  determination determinOnModify on modify { field FileName; }
+
+  draft determine action Prepare;
+
+  mapping for zmcdtcm0010
+    {
+      ID                 = id;
+      ProgPackage        = prog_package;
+      Purpose            = purpose;
+      Attachment         = ATTACHMENT;
+      MimeType           = MIMETYPE;
+      FileName           = FILENAME;
+      Description        = DESCRIPTION;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

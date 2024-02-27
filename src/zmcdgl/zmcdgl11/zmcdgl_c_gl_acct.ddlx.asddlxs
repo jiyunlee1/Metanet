@@ -1,0 +1,77 @@
+@Metadata.layer: #CORE
+
+@UI: { headerInfo: {
+                     typeNamePlural: 'GL Account 조회 - Table Header'
+                   }
+     }
+@Search.searchable: true
+
+annotate view ZMCDGL_C_GL_ACCT with
+{
+  @UI.facet: [{
+         id : 'HeaderFacet',
+         purpose: #HEADER,
+         type : #FIELDGROUP_REFERENCE,
+         position: 10,
+         targetQualifier: 'idt001',
+         label: 'GL Account 조회'
+      }]
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 10 }]
+  @UI.selectionField: [{position:10 }]
+  @Consumption.filter.mandatory: true
+  ChartOfAccounts;
+
+  @Search: { 
+    defaultSearchElement: true,
+    fuzzinessThreshold: 0.8
+  }
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{position:20 }]
+  @Consumption.valueHelpDefinition:[{ entity:{name: 'ZMCDGL_I_GL_ACCT',
+                                            element: 'GLAccount'}
+                                  }]
+  GLAccount;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{position:30 }]
+  GLAccountShort;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 40 }]
+  GLAccountLong;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 50 }]
+  BlockedPost;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 60 }]
+  Company;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 70 }]
+  AlterChartAcct;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 80 }]
+  AlterGLAcct;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 90 }]
+  ZccgShort;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 100 }]
+  GroupChartAcct;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 110 }]
+  GroupAcct;
+
+  @Search.defaultSearchElement: true
+  @UI.lineItem: [{ position: 120 }]
+  GroupAcctShort;
+}

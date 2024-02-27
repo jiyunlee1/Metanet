@@ -1,0 +1,90 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Define Calculate Cost Type',
+    typeNamePlural: 'Cost Types',
+    title: {
+        value: 'CostType'
+    },
+    description: { 
+        value: 'CostTypeNM'
+    }
+}
+@UI.selectionVariant: [{
+    qualifier: 'Draft',
+    text: 'Draft'
+}]
+
+annotate view ZMCDAR_C_COST_TYPE with
+{
+
+  @UI.facet: [{
+      type: #IDENTIFICATION_REFERENCE,
+      position: 10,
+      targetQualifier: 'idt001',
+      label: 'General Information'
+   },
+   {
+      label: 'History Information',
+      id: 'HistoryInfo',
+      type: #COLLECTION,
+      position: 30
+    },
+    {
+      id: 'Generation',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Generation',
+      parentId: 'HistoryInfo',
+      position: 10,
+      targetQualifier: 'idt003'
+    },
+    {
+      id: 'Modification',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Modification',
+      parentId: 'HistoryInfo',
+      position: 20,
+      targetQualifier: 'idt004'
+    }]
+
+  @UI.hidden: true
+  ID;
+
+  @UI.selectionField: [{position:10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  Company;
+
+  @UI.selectionField: [{position:30 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  CostType;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt001' } ]
+  CostTypeNM;
+
+  @UI.lineItem: [{ position: 45 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  CreatedBy;
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [ { position: 20, qualifier: 'idt003' } ]
+  CreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.lineItem: [{ position: 75 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt004' } ]
+  LastChangedAt;
+
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [ { position: 60, qualifier: 'idt004' } ]
+  LastChangedBy;
+}

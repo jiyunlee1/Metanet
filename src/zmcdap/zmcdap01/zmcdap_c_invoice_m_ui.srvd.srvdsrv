@@ -1,0 +1,9 @@
+@EndUserText.label: '[AP] Supplier Tax Invoice'
+define service ZMCDAP_C_INVOICE_M_UI {
+  expose ZMCDAP_U_INVOICE             as Invoice;
+  expose ZMCDAP_R_CUST_ITEM           as Item;
+  expose ZMCDAP_C_CUST_ITEM           as InvoiceItem;
+  expose ZMCDAP_C_INVOICE             as InvoiceBO;
+  expose ZMCDAP_C_INVOICE_ITEM        as ItemBO;
+  expose ZMCDAP_V_INVOICE_CALL_METHOD as CallMethod;
+}

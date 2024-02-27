@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Cost Center Interface Coupa'
+define service ZMCDIF_I_COSTCENTER_03_API {
+  expose ZMCDIF_I_COSTCENTER_03;
+}

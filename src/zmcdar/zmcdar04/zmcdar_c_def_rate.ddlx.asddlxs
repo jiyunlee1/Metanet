@@ -1,0 +1,130 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: 'Define Calculate rate',
+    typeNamePlural: 'Lines',
+    title: {
+      label: 'Profit Center',
+      value: 'ProfitCenter'
+    },
+    description: { 
+      label: 'Valid from Date',
+      value: 'ValidFrDate'
+    }
+}
+annotate view zmcdar_c_def_rate with
+{
+  @UI.facet: [
+    {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      position: 10
+    },
+    {
+      id: 'General',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      parentId: 'GeneralInfo',
+      position: 10,
+      targetQualifier: 'idt001'
+    },
+    
+    {
+      label: 'Rate Information',
+      id: 'RateInfo',
+      type: #COLLECTION,
+      position: 20
+    },
+    {
+      id: 'Rate',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      parentId: 'RateInfo',
+      position: 10,
+      targetQualifier: 'idt002'
+    },
+    
+    {
+      label: 'History Information',
+      id: 'HistoryInfo',
+      type: #COLLECTION,
+      position: 30
+    },
+    {
+      id: 'Generation',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Generation',
+      parentId: 'HistoryInfo',
+      position: 10,
+      targetQualifier: 'idt003'
+    },
+    {
+      id: 'Modification',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Modification',
+      parentId: 'HistoryInfo',
+      position: 20,
+      targetQualifier: 'idt004'
+    }
+  ]
+
+  @UI.hidden: true
+  ID;
+
+  @UI.selectionField: [{ position : 5 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  Company;
+
+  @UI.selectionField: [{ position : 20}]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  CostType;
+
+  @UI.lineItem: [{ position: 88 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt001' } ]
+  CostCenter;
+
+  @UI.selectionField: [{ position : 10 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [ { position: 60, qualifier: 'idt001' } ]
+  ProfitCenter;
+
+  @UI.selectionField: [{ position : 30 }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [ { position: 40, qualifier: 'idt001' } ]
+  RoleType;
+
+  @UI.selectionField: [{ position : 60 }]
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [ { position: 70, qualifier: 'idt001' } ]
+  BusinessPartner;
+  
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt002' } ]
+  Rate;
+
+
+  @UI.lineItem: [{ position: 58 }]
+  @UI.identification: [ { position: 20, qualifier: 'idt002' } ]
+  ValidFrDate;
+
+  @UI.lineItem: [{ position: 73 }]
+  @UI.identification: [ { position: 100, qualifier: 'idt001' } ]
+  ShutDownDate;
+
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  CreatedBy;
+
+  @UI.identification: [ { position: 20, qualifier: 'idt003' } ]
+  CreatedAt;
+
+  @UI.identification: [ { position: 40, qualifier: 'idt004' } ]
+  LastChangedAt;
+
+  @UI.identification: [ { position: 30, qualifier: 'idt004' } ]
+  LastChangedBy;
+
+}

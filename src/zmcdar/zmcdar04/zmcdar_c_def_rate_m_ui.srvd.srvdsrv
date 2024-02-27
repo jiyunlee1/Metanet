@@ -1,0 +1,5 @@
+@EndUserText.label: '[AR] 계산 비율 정의'
+define service ZMCDAR_C_DEF_RATE_M_UI {
+  expose zmcdar_c_def_rate        as DefRate;
+  expose ZMCDCM_C_MIME_REPOSITORY as MimeRep;
+}

@@ -1,0 +1,16 @@
+projection;
+strict ( 2 );
+use draft;
+
+define behavior for ZMCDAR_C_COST_TYPE alias CostType
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Resume;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+}

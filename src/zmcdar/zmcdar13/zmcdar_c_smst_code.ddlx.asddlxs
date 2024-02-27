@@ -1,0 +1,118 @@
+@Metadata.layer:#CORE
+@UI.headerInfo: {
+    typeName: 'Manage Smartstore Code',
+    typeNamePlural: 'Lines',
+    title: { value: 'SmartStoreName' },
+    description: { value: 'Account' }
+}
+@UI.selectionVariant: [{
+    qualifier: 'Draft',
+    text: 'Draft'
+}]
+annotate view ZMCDAR_C_SMST_CODE with
+{
+  @UI.facet: [
+    {
+        id: 'AccountHeader',
+        purpose: #HEADER,
+        type: #DATAPOINT_REFERENCE,
+        position: 10,
+        targetQualifier: 'Header'
+    },
+    {
+        id: 'StateHeader',
+        purpose: #HEADER,
+        type: #DATAPOINT_REFERENCE,
+        position: 20,
+        targetQualifier: 'StateHeader'
+    },
+    {
+       type: #IDENTIFICATION_REFERENCE,
+       position: 10,
+       targetQualifier: 'idt001',
+       label: 'General Information'
+    },
+    {
+        label: 'History Information',
+        id: 'HistoryInfo',
+        type: #COLLECTION,
+        position: 30
+      },
+      {
+        id: 'Generation',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        label: 'Generation',
+        parentId: 'HistoryInfo',
+        position: 10,
+        targetQualifier: 'idt002'
+      },
+      {
+        id: 'Modification',
+        type: #IDENTIFICATION_REFERENCE,
+        purpose: #STANDARD,
+        label: 'Modification',
+        parentId: 'HistoryInfo',
+        position: 20,
+        targetQualifier: 'idt003'
+      }]
+
+  @UI.hidden: true
+  Id;
+
+  @UI.selectionField: [{position:10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt001' } ]
+  Lineuse;
+  
+  @UI.dataPoint: { qualifier: 'StateHeader', title: 'Line Use', criticality: 'LineUseState', criticalityRepresentation: #WITH_ICON }
+  LineUseText;
+  
+  @UI.selectionField: [{position:30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  Account;
+
+
+  @UI.selectionField: [{position:40 }]
+  @UI.lineItem: [{ position: 40 }]
+  @UI.dataPoint: { qualifier: 'Header', title: 'G/L Account Name'}
+  GLAccountName;
+
+  @UI.selectionField: [{position:50 }]
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  SmartStore;
+
+  @UI.selectionField: [{position:60 }]
+  @UI.lineItem: [{ position: 60 }]
+  SmartStoreName;
+
+  @UI.selectionField: [{position:70 }]
+  @UI.lineItem: [{ position: 70 }]
+  Indent;
+
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt002' } ]
+  CreatedBy;
+
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [ { position: 20, qualifier: 'idt002' } ]
+  CreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden : true
+  LocalLastChangedAt;
+
+  @UI.lineItem: [{ position: 120 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  LastChangedBy;
+
+  @UI.lineItem: [{ position: 130 }]
+  @UI.identification: [ { position: 20, qualifier: 'idt003' } ]
+  LastChangedAt;
+
+
+}

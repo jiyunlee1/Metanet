@@ -1,0 +1,30 @@
+unmanaged implementation in class zbp_mcdap_u_invoice unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZMCDAP_U_INVOICE //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+
+  static action( precheck ) CallHeaderData parameter ZMCDAP_A_INVOICE_OPTION;
+  static function SetDefaultOpt result [1] zmcdap_a_invoice_option;
+
+  static action CallItemData parameter ZMCDAP_A_APPROVAL_NO;
+  association _InvoiceItem { create; }
+}
+
+define behavior for ZMCDAP_R_CUST_ITEM //alias <alias_name>
+//late numbering
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) HeaderID;
+  association _Header;
+}

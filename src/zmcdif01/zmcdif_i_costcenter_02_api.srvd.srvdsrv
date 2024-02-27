@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Cost Center Interface AutoBill'
+define service ZMCDIF_I_COSTCENTER_02_API {
+  expose ZMCDIF_I_COSTCENTER_02;
+}

@@ -1,0 +1,33 @@
+@Metadata.layer: #CORE
+annotate view ZMCDAP_C_CUST_ITEM with
+{
+  @UI.hidden: true
+  ID;
+
+  @UI.hidden: true
+  HeaderID;
+  
+  @UI.lineItem: [{ position: 10 }]
+  ItemDt;
+
+  @UI.lineItem: [{ position: 30 }]
+  ItemNm;
+
+  @UI.lineItem: [{ position: 50 }]
+  ItemQty;
+
+  @UI.lineItem: [{ position: 70 }]
+  ItemStd;
+
+  @UI.lineItem: [{ position: 90 }]
+  ItemUnt;
+
+  @UI.lineItem: [{ position: 110 }]
+  ItemSupAmt;
+
+  @UI.lineItem: [{ position: 130 }]
+  ItemTaxAmt;
+
+  @UI.lineItem: [{ position: 150 }]
+  ItemBigo;
+}

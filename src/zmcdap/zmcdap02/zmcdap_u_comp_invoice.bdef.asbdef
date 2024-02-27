@@ -1,0 +1,15 @@
+unmanaged implementation in class zbp_mcdap_u_comp_invoice unique;
+strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZMCDAP_U_COMP_INVOICE alias CompInvoice
+//late numbering
+lock master
+authorization master ( instance )
+{
+  action ( features : instance ) setExceptAction result [1] $self;
+  action ( features : instance ) cancelExceptAction result [1] $self;
+
+  side effects
+  { action setExceptAction affects $self;
+    action cancelExceptAction affects $self; }
+}

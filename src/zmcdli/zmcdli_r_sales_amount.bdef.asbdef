@@ -1,0 +1,38 @@
+managed implementation in class zbp_mcdli_r_sales_amount unique;
+strict;
+
+
+define behavior for ZMCDLI_R_SALES_AMOUNT alias SalesAmount
+persistent table zmcdtli0010
+lock master
+authorization master ( instance )
+
+{
+  create;
+  update;
+  delete;
+
+  //Feature Control
+  field ( readonly : update, numbering : managed ) ID;
+  field ( mandatory ) Company, FiscalYear, PlatformType, SalesAmount, Currency;
+  field ( features : instance ) FiscalYear, PlatformType;
+  field ( readonly ) LastChangedAt, LastChangedBy, CreatedAt, CreatedBy, LocalLastChangedAt, LocalLastChangedBy;
+
+  mapping for zmcdtli0010
+    {
+      id                 = ID;
+      Company            = COMPANY;
+      FiscalYear         = FISCAL_YEAR;
+      PlatformType       = PLATFORM_TYPE;
+      SalesAmount        = SALES_AMOUNT;
+      Currency           = CURRENCY;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+
+
+}

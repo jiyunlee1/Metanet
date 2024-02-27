@@ -1,0 +1,33 @@
+managed implementation in class zbp_mcdar_r_cbo_handle unique;
+strict ( 2 );
+
+define behavior for ZMCDAR_R_CBO_HANDLE //alias <alias_name>
+persistent table zmcdtar0050
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+
+  delete;
+  mapping for zmcdtar0050
+    {
+      Fiscalperiod = FISCALPERIOD;
+      Costtype = COSTTYPE;
+      Profitcenter = PROFITCENTER;
+      Roletype = ROLETYPE;
+      Validfrdate = VALIDFRDATE;
+      Validtodate = VALIDTODATE;
+      Shutdowndate = SHUTDOWNDATE;
+      Postingdate = POSTINGDATE;
+      IsReversed = RATE;
+      Rate = ISREVERSED;
+      Salesamount = SALESAMOUNT;
+      Calcamount = CALCAMOUNT;
+      Currency = CURRENCY;
+      Journalentrysa = JOURNALENTRYSA;
+      Journalentrydr = JOURNALENTRYDR;
+
+
+    }
+
+}

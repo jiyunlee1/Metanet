@@ -1,0 +1,114 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Attachment',
+    typeNamePlural: 'Attachments',
+    title: {
+      type: #STANDARD,
+      value: 'FileName'
+    },
+    description: {
+      type: #STANDARD,
+      value: 'Description'
+    }
+  },
+  presentationVariant: [
+    {
+      sortOrder: [{
+        by: 'FileName',
+        direction: #ASC
+      }],
+      visualizations: [{
+        type: #AS_LINEITEM
+      }]
+    }
+  ]
+}
+
+annotate view ZMCDCM_C_MIME_REPOSITORY with
+{
+
+  @UI.facet: [
+    {
+      id:              'Description',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      label:           'Description',
+      position:        10,
+      targetQualifier: 'Description'
+    },
+    {
+      id:              'Upload',
+      purpose:         #STANDARD,
+      type:            #FIELDGROUP_REFERENCE,
+      label:           'Upload',
+      position:        10,
+      targetQualifier: 'Upload'
+    }
+  ]
+
+  @UI: {
+   fieldGroup: [{
+     position:  10,
+     qualifier: 'Description'
+   }],
+   lineItem:       [ { position: 10, importance: #HIGH } ]
+ }
+  ProgPackage;
+
+  @UI: {
+  fieldGroup: [{
+    position:  30,
+    qualifier: 'Description'
+  }],
+  lineItem:       [ { position: 30, importance: #HIGH } ]
+  }
+  @UI.selectionField: [{ position : 50 }]
+  Purpose;
+
+
+  @UI: {
+    fieldGroup: [{
+      position:  50,
+      qualifier: 'Description'
+    }],
+    lineItem:       [ { position: 70, importance: #HIGH } ]
+  }
+  @UI.selectionField: [{ position : 30 }]
+  Description;
+  
+  @UI: {
+    fieldGroup: [{
+      position:  10,
+      qualifier: 'Upload'
+    }],
+    lineItem:       [ { position: 90, importance: #HIGH } ]
+  }
+  @UI.selectionField: [{ position : 70 }]
+  Attachment;
+
+@UI.hidden: true
+  MimeType;
+
+@UI.hidden: true
+  FileName;
+
+  @UI.hidden: true
+  CreatedBy;
+
+  @UI.hidden: true
+  CreatedAt;
+
+  @UI.hidden: true
+  LocalLastChangedBy;
+
+  @UI.hidden: true
+  LocalLastChangedAt;
+
+  @UI.hidden: true
+  LastChangedAt;
+
+  @UI.hidden: true
+  LastChangedBy;
+
+}

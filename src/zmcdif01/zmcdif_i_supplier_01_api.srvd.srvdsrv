@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Supplier Interface AutoBill'
+define service ZMCDIF_I_SUPPLIER_01_API {
+  expose ZMCDIF_I_SUPPLIER_01;
+}

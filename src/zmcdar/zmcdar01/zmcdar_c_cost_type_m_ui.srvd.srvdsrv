@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] 비용 유형 관리'
+define service ZMCDAR_C_COST_TYPE_M_UI {
+  expose ZMCDAR_C_COST_TYPE as CostType;
+}

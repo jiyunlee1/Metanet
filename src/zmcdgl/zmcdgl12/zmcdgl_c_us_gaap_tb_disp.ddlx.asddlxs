@@ -1,0 +1,59 @@
+@Metadata.layer:#CORE
+@UI.headerInfo: {
+    typeName: 'GAAP',
+    typeNamePlural: 'GAAP',
+    title: { value: 'FiscalYearPeriod' }
+}
+@UI.selectionVariant: [{
+    qualifier: 'Draft',
+    text: 'Draft'
+}]
+annotate view ZMCDGL_C_US_GAAP_TB_DISP with
+{
+  @UI.facet: [{
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'idt001',
+      label: 'GAAP'
+   }]
+   
+  @UI.selectionField: [{ position: 10 }]
+  Ledger;
+  @UI.selectionField: [{ position: 20 }]
+  CompanyCode;
+  @UI.selectionField: [{ position: 30 }]
+  CorporateGroupChartOfAccounts;
+  @UI.selectionField: [{ position: 40 }]
+  FiscalYearPeriod;
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10, qualifier: 'idt001' }]
+  @EndUserText.label: 'Year'
+  FiscalYear;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20, qualifier: 'idt001' }]
+  @EndUserText.label: 'Period'
+  Period;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30, qualifier: 'idt001' }]
+  @EndUserText.label: 'Scenario'
+  Scenario;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40, qualifier: 'idt001' }]
+  @EndUserText.label: 'TB Submission Entity'
+  TB_Submission_Entity;
+  @UI.hidden: true
+  BalanceTransactionCurrency;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50, qualifier: 'idt001' }]
+  @EndUserText.label: 'Global COA Account'
+  CorporateGroupAccount;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60, qualifier: 'idt001' }]
+  @EndUserText.label: 'Amount'
+  Amount;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [{ position: 70, qualifier: 'idt001' }]
+  @EndUserText.label: 'Source System Identifier'
+  Src_Sys_Identifier;
+}

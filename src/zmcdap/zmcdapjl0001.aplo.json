@@ -1,0 +1,18 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Application Job Log",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "subobjects": [
+    {
+      "name": "ZMCDAPJL0001_01",
+      "description": "Invoice Header Batch"
+    },
+    {
+      "name": "ZMCDAPJL0001_02",
+      "description": "Invoice Item Batch"
+    }
+  ]
+}

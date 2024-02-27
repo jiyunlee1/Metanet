@@ -1,0 +1,5 @@
+@EndUserText.label: '[AP] Supplier ETax Invoice Comparison List'
+define service ZMCDAP_C_COMP_INVOICE_M_UI {
+  expose ZMCDAP_U_COMP_INVOICE as CompInvoice;
+  expose ZMCDAP_C_COMP_EXCPT   as CompExcpt;
+}

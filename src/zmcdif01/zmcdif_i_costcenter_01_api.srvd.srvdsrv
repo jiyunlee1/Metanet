@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Cost Center Interface Macfin'
+define service ZMCDIF_I_COSTCENTER_01_API {
+  expose ZMCDIF_I_COSTCENTER_01;
+}

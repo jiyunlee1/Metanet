@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] 매출액 합산 계정 관리'
+define service ZMCDAR_C_SALES_ACCT_M_UI {
+  expose ZMCDAR_C_SALES_ACCT as SalesAcct;
+}

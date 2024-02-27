@@ -1,0 +1,17 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZMCDAP_A_DEEP_HEADER alias DeepParam
+{
+    field ( suppress ) DummyKey;
+
+    association _SelectedItems;
+}
+
+define behavior for ZMCDAP_A_DEEP_ITEM alias DeepItem
+{
+    field ( suppress ) DummyKey;
+
+    association _DummyAssociation;
+}

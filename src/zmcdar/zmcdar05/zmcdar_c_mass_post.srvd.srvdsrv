@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] 비용 유형 별 대향 전표 처리'
+define service ZMCDAR_C_MASS_POST {
+  expose ZMCDAR_C_MASS_POST;
+}

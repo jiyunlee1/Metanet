@@ -1,0 +1,5 @@
+@EndUserText.label: '매출 유형 별 매출액 등록'
+define service ZMCDLI_C_SALES_AMOUNT_M_UI {
+  expose ZMCDLI_C_SALES_AMOUNT as SalesAmount;
+  expose ZMCDLI_C_SALES_AMT as SalesAmt;
+}

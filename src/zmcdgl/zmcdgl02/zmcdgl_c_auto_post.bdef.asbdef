@@ -1,0 +1,20 @@
+projection;
+strict ( 2 );
+
+define behavior for ZMCDGL_C_AUTO_POST //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+  use action validation_check ;
+  use action post_doc;
+  use association _PostDetail { create; }
+}
+
+define behavior for ZMCDGL_C_POST_DETAIL //alias <alias_name>
+{
+  use update;
+  use delete;
+
+  use association _AutoPost;
+}

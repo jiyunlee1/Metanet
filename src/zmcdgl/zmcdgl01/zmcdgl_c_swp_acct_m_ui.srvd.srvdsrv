@@ -1,0 +1,5 @@
+@EndUserText.label: '[GL] Sweeping Account 정의'
+define service ZMCDGL_C_SWP_ACCT_M_UI {
+  expose ZMCDGL_C_SWP_ACCT        as SwpAcct;
+  expose ZMCDCM_C_MIME_REPOSITORY as MimeRep;
+}

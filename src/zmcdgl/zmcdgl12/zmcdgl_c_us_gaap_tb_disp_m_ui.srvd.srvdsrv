@@ -1,0 +1,5 @@
+@EndUserText.label: '[GL] US-GAAP 시산 조회'
+define service ZMCDGL_C_US_GAAP_TB_DISP_M_UI {
+  expose ZMCDGL_C_US_GAAP_TB_DISP  as TBDisp;
+  expose ZMCDGL_C_US_GAAP_TB_DISP2 as TBDisp2;
+}

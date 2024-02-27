@@ -1,0 +1,11 @@
+managed with unmanaged save implementation in class zbp_mcdar_r_rate_bo unique;
+strict ( 2 );
+
+define behavior for ZMCDAR_R_RATE_BO //alias <alias_name>
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+    static action MASS_POST2 deep parameter ZMCDAR_A_MASS_POST;
+  static action mass_post parameter zmcdar_a_post_json_01;
+}

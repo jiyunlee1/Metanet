@@ -1,0 +1,11 @@
+unmanaged implementation in class zbp_mcdli_u_re_cond_tp unique;
+//strict ( 2 ); //Uncomment this line in order to enable strict mode 2. The strict mode has two variants (strict(1), strict(2)) and is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZMCDLI_U_RE_COND_TP
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  static function valid_check parameter zmcdli_a_condition_json_01 result [0..*] zmcdli_a_condition_err_01;
+  static action create_condition parameter zmcdli_a_condition_json_01 result [0..*] zmcdli_a_condition_err_02;
+}

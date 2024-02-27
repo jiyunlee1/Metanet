@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Profit Center Interface AutoBill'
+define service ZMCDIF_I_PROFITCENTER_02_API {
+  expose ZMCDIF_I_PROFITCENTER_02;
+}

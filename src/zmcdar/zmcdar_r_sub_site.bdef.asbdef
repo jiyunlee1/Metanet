@@ -1,0 +1,47 @@
+managed implementation in class ZBP_MCDAR_R_SUB_SITE unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_SUB_SITE alias SubSite
+persistent table zmcdtar0060
+draft table zmcddar0060
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  field ( readonly : update, numbering : managed ) id;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( features : instance ) Subsite, SubsiteName;
+  field ( mandatory ) CostcenterType;
+
+  validation validateData on save { create; field Subsite, SubsiteName, CostcenterType; }
+
+  determination determinonSubsite on modify {field SubsiteName;}
+
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+
+  mapping for zmcdtar0060
+    {
+      ID                 = id;
+      Subsite            = subsite;
+      SubsiteName        = subsite_name;
+      CostcenterType     = costcenter_type;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+
+}

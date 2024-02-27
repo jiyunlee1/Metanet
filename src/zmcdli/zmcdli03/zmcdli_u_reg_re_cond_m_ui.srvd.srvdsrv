@@ -1,0 +1,12 @@
+@EndUserText.label: '계약 조건 추가'
+define service ZMCDLI_U_REG_RE_COND_M_UI {
+  expose ZMCDLI_U_REG_RE_CONDITION     as RECondition;
+  expose ZMCDLI_U_RE_CONTRACT          as Contract;
+  expose ZMCDLI_U_VH_RE_CONTRACT       as ContractVH;
+  expose ZMCDLI_U_VH_RE_CONTRACT_TYPE  as ContractTP;
+  expose ZMCDLI_I_TEXT_RE_CONDITION_GP as RECondGPText;
+  expose I_REConditionType             as ReCondTP;
+  expose ZMCDLI_U_VH_RE_POSTING        as REContrPosting;
+  expose ZMCDLI_U_VH_RE_RHYTHM         as REContrRhythm;
+  expose ZMCDLI_U_VH_RE_ORGASSGMT      as REContrOrgAss;
+}

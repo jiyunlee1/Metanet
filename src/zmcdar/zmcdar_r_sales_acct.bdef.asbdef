@@ -1,0 +1,50 @@
+
+managed implementation in class zbp_mcdar_r_sales_acct unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_SALES_ACCT alias sales_acct
+persistent table zmcdtar0020
+draft table zmcddar0020
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+//etag master <field_name>
+{
+  field ( readonly : update, numbering : managed ) id;
+  field ( mandatory ) Costtype, Costcentertype, Account;
+  field ( readonly ) Company, Accountnm, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  create;
+  update;
+  delete;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+
+  validation validateData on save { create; update; field Company, CostType, CostcenterType, Accountnm; }
+
+  determination determinOnModify on modify { create; update; }
+  determination determinOnAccount on modify { field Account; }
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+
+  mapping for zmcdtar0020
+    {
+      Id                 = ID;
+      Company            = Company;
+      Costtype           = COST_TYPE;
+      CostcenterType     = COSTCENTER_TYPE;
+      Account            = ACCOUNT;
+      Accountnm          = ACCOUNT_NAME;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

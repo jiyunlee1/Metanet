@@ -1,0 +1,20 @@
+projection implementation in class zbp_mcdap_c_invoice unique;
+strict ( 2 );
+
+define behavior for ZMCDAP_C_INVOICE //alias <alias_name>
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _Items { create; }
+}
+
+define behavior for ZMCDAP_C_INVOICE_ITEM //alias <alias_name>
+{
+
+  use update;
+  use delete;
+
+  use association _Header;
+}

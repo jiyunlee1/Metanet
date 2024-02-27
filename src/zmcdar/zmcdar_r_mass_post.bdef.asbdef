@@ -1,0 +1,33 @@
+managed implementation in class zbp_mcdar_r_mass_post unique;
+strict ( 2 );
+
+define behavior for ZMCDAR_R_MASS_POST //alias <alias_name>
+persistent table zmcdtar0050
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly:update ) Fiscalperiod, ProfitCenter, CostType, RoleType, ValidFrDate, validtodate;
+  mapping for zmcdtar0050
+    {
+      Fiscalperiod   = FISCALPERIOD;
+      Costtype       = COSTTYPE;
+      Profitcenter   = PROFITCENTER;
+      Roletype       = ROLETYPE;
+      Validfrdate    = VALIDFRDATE;
+      Validtodate    = VALIDTODATE;
+      Shutdowndate   = SHUTDOWNDATE;
+      Postingdate    = POSTINGDATE;
+      Rate           = RATE;
+      IsReversed     = ISREVERSED;
+      Salesamount    = SALESAMOUNT;
+      Calcamount     = CALCAMOUNT;
+      Currency       = CURRENCY;
+      Journalentrysa = JOURNALENTRYSA;
+      Journalentrydr = JOURNALENTRYDR;
+    }
+}

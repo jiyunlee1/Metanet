@@ -1,0 +1,56 @@
+
+managed implementation in class zbp_mcdar_r_def_rate unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_DEF_RATE alias DefRate
+persistent table zmcdtar0040
+draft table zmcddar0040
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  draft action Edit;
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+  //Json validation
+  static function validation_check parameter zmcdar_a_imp_json_01 result [0..*] zmcdar_a_exp_err_01;
+  static function excel_validation parameter ZMCDCM_A_EXCEL_iMP result [0..*] zmcdar_a_excel_return_04;
+
+  field ( readonly : update, numbering : managed ) id;
+  field ( mandatory ) ProfitCenter, CostType, RoleType, ValidFrDate,  Costcenter, Rate;
+  field ( readonly ) Company, ShutDownDate, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  //Draft validation
+  validation validationData on save { create; update; field CostType, CostCenter, ProfitCenter, Rate, RoleType, ValidFrDate; }
+
+  determination determinModify on modify { create; update; }
+  draft determine action Prepare
+  {
+    validation validationData;
+  }
+
+  mapping for zmcdtar0040
+    {
+      id                 = id;
+      Company            = company;
+      ProfitCenter       = profit_center;
+      CostType           = cost_type;
+      RoleType           = role_type;
+      Rate               = rate;
+      ValidFrDate        = valid_fr_date;
+      ShutDownDate       = shut_down_date;
+      Costcenter         = cost_center;
+      BusinessPartner    = business_partner;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

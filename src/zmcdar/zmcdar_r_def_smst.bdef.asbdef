@@ -1,0 +1,49 @@
+managed implementation in class zbp_mcdar_r_def_smst unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDAR_R_DEF_SMST alias DefSmartStore
+persistent table zmcdtar0070
+draft table zmcddar0070
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+
+{
+  create;
+  update;
+  delete;
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+
+  field ( readonly : update ) SmartStore;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( mandatory ) SmartStoreName, Indent;
+
+  validation validateData on save { create; update; field SmartStoreName; }
+
+  determination determinOnModify on modify { field SmartStoreName, Formula; }
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+  side effects
+  {
+    field Formula affects field IsComb;
+  }
+  mapping for zmcdtar0070
+    {
+      SmartStore         = smart_store;
+      SmartStoreName     = smart_store_name;
+      Indent             = indent;
+      IsComb             = is_comb;
+      Formula            = formula;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

@@ -1,0 +1,12 @@
+@EndUserText.label: '[GL] Bank Statement Auto - Posting'
+define service ZMCDGL_C_AUTO_POST_M_UI {
+  expose ZMCDGL_C_AUTO_POST      as AutoPost;
+  expose ZMCDGL_C_POST_DETAIL    as PostDetail;
+  expose ZMCDGL_C_RECEIPT_PAGE   as ReceiptPage;
+  expose ZMCDGL_C_SWEEP_PAGE     as SweepPage;
+  expose ZMCDGL_C_RECEIPT_DETAIL as ReceiptDetail;
+  expose ZMCDGL_C_SWEEP_DETAIL   as SweepDetail;
+  expose ZMCDGL_V_DOC_TYPE       as DocTypeVH;
+  expose ZMCDGL_V_DOC_STATE      as DocStateVH;
+  expose ZMCDGL_V_BANK_LINKAGE   as BankLinkVH;
+}

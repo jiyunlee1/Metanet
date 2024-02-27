@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Profit Center Interface Macfin'
+define service ZMCDIF_I_PROFITCENTER_01_API {
+  expose ZMCDIF_I_PROFITCENTER_01;
+}

@@ -1,0 +1,83 @@
+managed implementation in class zbp_mcdgl_r_auto_post unique;
+strict ( 2 );
+
+define behavior for ZMCDGL_R_AUTO_POST alias AutoPost
+persistent table zmcdtgl0020
+lock master
+authorization master ( instance )
+etag master LocalLastChangedAt
+{
+  create;
+  update;
+  delete;
+
+  static action validation_check parameter zmcdgl_a_imp_json_01 result [0..*] zmcdgl_a_exp_err_01;
+  static action post_doc parameter zmcdgl_a_imp_json_01 result [0..*] zmcdgl_a_exp_err_01;
+
+  field ( readonly : update, numbering : managed ) ID;
+  field ( readonly )  CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+//RevState, RevStateText,
+  determination determinModify on modify { create; update; }
+  mapping for zmcdtgl0020
+    {
+      ID                          = ID;
+      DocSeqNo                    = DOC_SEQ_NO;
+      Company                     = COMPANY;
+      DocType                     = DOC_TYPE;
+      Bank                        = BANK;
+      BankAcctID                  = BANK_ACCT_ID;
+      Account                     = ACCOUNT;
+      DocDate                     = DOC_DATE;
+      PostingDate                 = POSTING_DATE;
+      AmountInTransactionCurrency = AMOUNT_IN_TRANSACTION_CURRENCY;
+      TransactionCurrency         = TRANSACTION_CURRENCY;
+      RefDocHeader                = REF_DOC_HEADER;
+      State                       = STATE;
+      CreatedBy                   = created_by;
+      CreatedAt                   = created_at;
+      LocalLastChangedBy          = local_last_changed_by;
+      LocalLastChangedAt          = local_last_changed_at;
+      LastChangedAt               = last_changed_at;
+      LastChangedBy               = last_changed_by;
+    }
+  association _PostDetail { create; }
+}
+
+define behavior for ZMCDGL_R_POST_DETAIL alias to_PostDetail
+persistent table zmcdtgl0030
+lock dependent by _AutoPost
+authorization dependent by _AutoPost
+//etag master <field_name>
+{
+  update;
+  delete;
+
+  field ( readonly : update, numbering : managed ) ID;
+  field ( readonly ) HouseBank, HouseDebitNM, HouseBankAccount, IsReversed, DebitGL, HouseDebitGL, Total, HeaderID, CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  mapping for zmcdtgl0030
+    {
+      ID                          = ID;
+      HeaderID                    = HEADER_ID;
+      DocDateR                    = DOC_DATE_R;
+      DocDateS                    = DOC_DATE_S;
+      SendBank                    = SEND_BANK;
+      Sender                      = SENDER;
+      DebitBank                   = DEBIT_BANK;
+      DebitAccount                = DEBIT_ACCOUNT;
+      Fee                         = FEE;
+      PostingDate                 = POSTING_DATE;
+      Description                 = DESCRIPTION;
+      AmountInTransactionCurrency = AMOUNT_IN_TRANSACTION_CURRENCY;
+      CurrencyCode                = CURRENCY_CODE;
+      JournalEntry                = journalentry;
+      CreatedBy                   = created_by;
+      CreatedAt                   = created_at;
+      LocalLastChangedBy          = local_last_changed_by;
+      LocalLastChangedAt          = local_last_changed_at;
+      LastChangedAt               = last_changed_at;
+      LastChangedBy               = last_changed_by;
+    }
+
+  association _AutoPost;
+}

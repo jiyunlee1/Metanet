@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Invoice Payment Interface Coupa'
+define service ZMCDIF_I_PAYMENT_01 {
+  expose ZMCDIF_I_PAYMENT_01;
+}

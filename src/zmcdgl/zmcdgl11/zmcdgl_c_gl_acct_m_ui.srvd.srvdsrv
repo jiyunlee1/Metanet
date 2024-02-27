@@ -1,0 +1,4 @@
+@EndUserText.label: '[GL] GL Account 조회'
+define service ZMCDGL_C_GL_ACCT_M_UI {
+  expose ZMCDGL_C_GL_ACCT as GLAcct;
+}

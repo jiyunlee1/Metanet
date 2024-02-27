@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] GL Account Interface AutoBill'
+define service ZMCDIF_I_GLACCOUNT_02_API {
+  expose ZMCDIF_I_GLACCOUNT_02;
+}

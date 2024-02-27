@@ -1,0 +1,15 @@
+abstract;
+strict ( 2 );
+with hierarchy;
+
+define behavior for ZMCDAR_A_MASS_POST alias DocDataSet
+{
+    field ( suppress ) DummyKey;
+    association _DocData;
+}
+
+define behavior for ZMCDAR_A_DOC_DATA alias DocData
+{
+    field ( suppress ) DummyKey;
+    association _DummyAssociation;
+}

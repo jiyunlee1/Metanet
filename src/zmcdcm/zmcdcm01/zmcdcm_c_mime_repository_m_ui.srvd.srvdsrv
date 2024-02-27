@@ -1,0 +1,4 @@
+@EndUserText.label: '[CM] MIME Repository'
+define service ZMCDCM_C_MIME_REPOSITORY_M_UI {
+  expose ZMCDCM_C_MIME_REPOSITORY as MimeRepository;
+}

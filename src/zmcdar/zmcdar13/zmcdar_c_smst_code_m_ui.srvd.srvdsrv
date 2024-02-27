@@ -1,0 +1,5 @@
+@EndUserText.label: '[AR] Smart Store 관리'
+define service ZMCDAR_C_SMST_CODE_M_UI {
+  expose ZMCDAR_C_SMST_CODE       as SmstCode;
+  expose ZMCDCM_C_MIME_REPOSITORY as MimeRep;
+}

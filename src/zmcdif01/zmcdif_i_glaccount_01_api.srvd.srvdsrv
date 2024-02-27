@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] GL Account Interface Macfin'
+define service ZMCDIF_I_GLACCOUNT_01_API {
+  expose ZMCDIF_I_GLACCOUNT_01;
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] SubSite 관리'
+define service ZMCDAR_C_SUB_SITE_M_UI {
+  expose ZMCDAR_C_SUB_SITE as SubSite;
+}

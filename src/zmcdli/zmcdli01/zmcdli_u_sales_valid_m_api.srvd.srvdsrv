@@ -1,0 +1,4 @@
+@EndUserText.label: '매출 유형 별 매출액 등록'
+define service ZMCDLI_U_SALES_VALID_M_API {
+  expose ZMCDLI_U_SALES_VALID;
+}

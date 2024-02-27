@@ -1,0 +1,10 @@
+@EndUserText.label: '[AR] 비용 유형 별 대량 전표 처리'
+define service ZMCDAR_U_MASS_POST_M_UI {
+  expose ZMCDAR_U_MASS_POST     as MassPost;
+  expose ZMCDAR_U_DOC_PROC      as DocProc;
+  expose ZMCDAR_V_PROFIT_CENTER as ProfitCenter;
+  expose ZMCDAR_V_COST_TYPE     as CostType;
+  expose ZMCDAR_V_DOC_STATE     as DocState;
+  expose ZMCDAR_V_ROLE_TYPE     as RoleType;
+  expose ZMCDAR_C_MASS_POST     as ManageMassPost;
+}

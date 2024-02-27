@@ -1,0 +1,4 @@
+@EndUserText.label: '[IF] Supplier Interface Coupa'
+define service ZMCDIF_I_SUPPLIER_02_API {
+  expose ZMCDIF_I_SUPPLIER_02;
+}

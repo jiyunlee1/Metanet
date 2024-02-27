@@ -1,0 +1,11 @@
+@EndUserText.label: '[AR] Export Smartstore PL'
+define service ZMCDAR_C_SMST_PL_M_UI {
+  expose ZMCDAR_I_PNL_ACCT     as PNLAccountDtl;
+  expose ZMCDAR_I_ACT_MNT_SRC  as ActMntlyBase;
+  expose ZMCDAR_U_ACT_MNT      as ActMntly;
+  expose ZMCDAR_U_ACT_DTL      as ActDtl;
+  expose ZMCDAR_I_ACT_MNT_CNT  as ActMntlyCnt;
+  expose ZMCDAR_I_ACT_DTL_CNT  as ActDtlCnt;
+  expose ZMCDAR_I_DTL_ACCT     as ActDtlAcct;
+  expose ZMCDAR_I_DTL_ACCT_CNT as ActDtlAcctCnt;
+}

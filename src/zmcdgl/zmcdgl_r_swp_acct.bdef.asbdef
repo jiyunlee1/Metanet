@@ -1,0 +1,52 @@
+managed implementation in class zbp_mcdgl_r_swp_acct unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZMCDGL_R_SWP_ACCT alias SWPAcct
+persistent table zmcdtgl0010
+draft table zmcddgl0010
+lock master total etag LocalLastChangedAt
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Resume;
+  draft action Activate;
+  draft action Discard;
+
+  field ( readonly : update, numbering : managed ) Id;
+  field ( mandatory ) Bank, Account, GlAccount, ProfitCenter, Description;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+  field ( features : instance ) Bank, Account;
+
+  static function validation_check parameter zmcdgl_a_imp_json_02 result [0..*] zmcdgl_a_exp_err_02;
+  static function excel_validation parameter ZMCDCM_A_EXCEL_IMP result [0..*] zmcdgl_a_excel_return_01;
+
+  validation validateData on save { create; update; field Bank, Account, GLAccount, ProfitCenter, Description; }
+
+
+  draft determine action Prepare
+  {
+    validation validateData;
+  }
+
+
+  mapping for zmcdtgl0010
+    {
+      Id                 = id;
+      Bank               = bank;
+      Account            = account;
+      GlAccount          = gl_account;
+      ProfitCenter       = profit_center;
+      Description        = description;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}

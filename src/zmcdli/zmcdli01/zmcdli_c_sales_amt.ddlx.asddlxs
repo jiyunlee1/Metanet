@@ -1,0 +1,70 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {
+    typeName: '로열티 매출유형별 매출액 및 비율 등록',
+    typeNamePlural: '로열티 매출유형별 매출액',
+    title: {
+        value: 'FiscalYear'
+    }
+}
+
+
+@UI.presentationVariant: [
+  {
+    groupBy: ['FiscalYear'],
+//    totalBy: ['FiscalYear'],
+//    sortOrder: [{ by: 'FiscalYear' }],
+//    includeGrandTotal: true,
+//    total: ['SalesAmount','Currency'],
+//    requestAtLeast: ['SalesAmount', 'Id'],
+    visualizations: [{ type: #AS_LINEITEM }]
+  }
+]
+annotate view ZMCDLI_C_SALES_AMT with
+{
+
+  @UI.facet: [{
+      type: #IDENTIFICATION_REFERENCE,
+      position: 10,
+      targetQualifier: 'idt001',
+      label: '매출유형별 매출액'
+   }]
+  @UI.hidden: true
+  Id;
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10, qualifier: 'idt001' }]
+  Company;
+
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 20, qualifier: 'idt001' }]
+  FiscalYear;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [{ position: 30, qualifier: 'idt001' }]
+  PlatformType;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40, qualifier: 'idt001' }]
+  SalesAmount;
+
+
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60, qualifier: 'idt001' }]
+  Ratio;
+
+  @UI.hidden: true
+  CreatedBy;
+  @UI.hidden: true
+  CreatedAt;
+  @UI.hidden: true
+  LocalLastChangedBy;
+  @UI.hidden: true
+  LocalLastChangedAt;
+  @UI.hidden: true
+  LastChangedAt;
+  @UI.hidden: true
+  LastChangedBy;
+
+}

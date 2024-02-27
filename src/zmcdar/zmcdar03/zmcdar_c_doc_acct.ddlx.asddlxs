@@ -1,0 +1,106 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Define Calculate Cost GL assign',
+    typeNamePlural: 'Items',
+    title:{ 
+      value: 'Account'
+    },
+    description: { 
+      value: 'AccountNM'
+    }
+}
+@UI.selectionVariant: [{
+    qualifier: 'Draft',
+    text: 'Draft'
+}]
+
+annotate view ZMCDAR_C_DOC_ACCT with
+{
+  @UI.facet: [
+    {
+      label: 'General Information',
+      id: 'GeneralInfo',
+      type: #COLLECTION,
+      position: 10
+    },
+    {
+      id: 'General',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      parentId: 'GeneralInfo',
+      position: 10,
+      targetQualifier: 'idt001'
+    },
+    {
+      label: 'History Information',
+      id: 'HistoryInfo',
+      type: #COLLECTION,
+      position: 30
+    },
+    {
+      id: 'Generation',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Generation',
+      parentId: 'HistoryInfo',
+      position: 10,
+      targetQualifier: 'idt003'
+    },
+    {
+      id: 'Modification',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      label: 'Modification',
+      parentId: 'HistoryInfo',
+      position: 20,
+      targetQualifier: 'idt004'
+    }]
+
+  @UI.hidden: true
+  ID;
+
+  @UI.selectionField: [{position:10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [ { position: 10, qualifier: 'idt001' } ]
+  Company;
+
+  @UI.selectionField: [{position:30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [ { position: 30, qualifier: 'idt001' } ]
+  CostType;
+
+  @UI.selectionField: [{position:50 }]
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [ { position: 50, qualifier: 'idt001' } ]
+  RoleType;
+
+  @UI.lineItem: [{ position: 70 }]
+  @UI.identification: [ { position: 70, qualifier: 'idt001' } ]
+  DocType;
+
+  @UI.lineItem: [{ position: 90 }]
+  @UI.identification: [ { position: 90, qualifier: 'idt001' } ]
+  PostingKey;
+
+  @UI.lineItem: [{ position: 110 }]
+  @UI.identification: [ { position: 110, qualifier: 'idt001' } ]
+  Account;
+
+  @UI.lineItem: [{ position: 130 }]
+  @UI.identification: [ { position: 130, qualifier: 'idt001' } ]
+  AccountNM;
+
+  @UI.identification: [ { position: 10, qualifier: 'idt003' } ]
+  CreatedBy;
+ 
+  @UI.identification: [ { position: 20, qualifier: 'idt003' } ]
+  CreatedAt;
+ 
+  @UI.identification: [ { position: 40, qualifier: 'idt004' } ]
+  LastChangedAt;
+ 
+  @UI.identification: [ { position: 30, qualifier: 'idt004' } ]
+  LastChangedBy;
+  
+}

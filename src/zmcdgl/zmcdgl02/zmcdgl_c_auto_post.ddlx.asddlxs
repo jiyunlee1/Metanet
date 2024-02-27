@@ -1,0 +1,71 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'Documents',
+        typeNamePlural: 'Documents',
+        title: {
+            type: #STANDARD, value: 'DocSeqNo'
+        },
+        description: {
+            value: 'RefDocHeader'
+        }
+    }
+}
+annotate view ZMCDGL_C_AUTO_POST with
+{
+  @UI.facet: [
+    {
+      id: 'Header',
+      label: 'Header Data',
+      type: #IDENTIFICATION_REFERENCE,
+      purpose: #STANDARD,
+      position: 10,
+      targetQualifier: 'Header'
+    }
+    ]
+  @UI.hidden: true
+  ID;
+
+  @UI.lineItem: [{ position: 30, cssDefault:{width: '15rem'}}]
+  @UI.identification: [ { position: 10, qualifier: 'Header' } ]
+  DocSeqNo;
+
+  @UI.lineItem: [{ position: 70}]
+  DocType;
+
+  @UI.lineItem: [{ position: 90, cssDefault:{width: '10rem'}}]
+  Company;
+
+  @UI.lineItem: [{ position: 110}]
+  Bank;
+
+  @UI.lineItem: [{ position: 130, cssDefault:{width: '10rem'}}]
+  BankAcctID;
+
+  @UI.lineItem: [{ position: 170}]
+  @UI.identification: [ { position: 30, qualifier: 'Header' } ]
+  AmountInTransactionCurrency;
+
+
+  @UI.identification: [ { position: 30, qualifier: 'Header' } ]
+  TransactionCurrency;
+
+
+  //DocDate;
+  @UI.lineItem: [{ position: 150 }]
+  PostingDate;
+
+  @UI.selectionField: [{ position: 10}]
+  State;
+
+  @UI.lineItem: [{ position: 10, criticality: 'State', criticalityRepresentation: #WITH_ICON, cssDefault:{width: '7rem'}}]
+  StateText;
+
+  @UI.lineItem: [{ position: 20, criticality: 'DocState', criticalityRepresentation: #WITH_ICON, cssDefault:{width: '15rem'} }]
+  DocStateText;
+
+  @UI.lineItem: [{ position: 50}]
+  @UI.selectionField: [{ position: 50}]
+  CreatedAt;
+
+}

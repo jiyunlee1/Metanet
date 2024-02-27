@@ -1,0 +1,4 @@
+@EndUserText.label: '[AR] Smart Store 정의'
+define service ZMCDAR_C_DEF_SMST_M_UI {
+  expose ZMCDAR_C_DEF_SMST as DefSmartStore;
+}

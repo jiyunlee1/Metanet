@@ -1,0 +1,17 @@
+@Metadata.layer: #CORE
+annotate entity ZMCDAP_A_INVOICE_OPTION 
+    with 
+{
+  @EndUserText.label: 'Business Place'
+  business_place;
+  
+
+  @EndUserText.label: 'From Date'
+  from_date;
+  
+  @EndUserText.label: 'To Date'
+  to_date;
+
+  @EndUserText.label: 'Method'
+  method;
+}

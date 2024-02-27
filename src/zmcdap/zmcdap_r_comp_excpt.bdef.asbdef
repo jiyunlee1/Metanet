@@ -1,0 +1,32 @@
+managed implementation in class zbp_mcdap_r_comp_excpt unique;
+strict ( 2 );
+
+define behavior for ZMCDAP_R_COMP_EXCPT //alias <alias_name>
+persistent table zmcdtap0030
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+
+  static action setExcept deep parameter ZMCDAP_A_DEEP_HEADER result [1] ZMCDAP_A_RETURN;
+  static action cancelExcept deep parameter ZMCDAP_A_DEEP_HEADER result [1] ZMCDAP_A_RETURN;
+
+  field ( readonly : update, numbering : managed ) id;
+  field ( readonly ) CreatedBy, CreatedAt, LastChangedBy, LastChangedAt, LocalLastChangedBy, LocalLastChangedAt;
+
+  mapping for zmcdtap0030
+    {
+      Id                 = ID;
+      IssueNo            = ISSUE_NO;
+      ExptStat           = EXPT_STAT;
+      CreatedBy          = CREATED_BY;
+      CreatedAt          = CREATED_AT;
+      LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+      LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+      LastChangedAt      = LAST_CHANGED_AT;
+      LastChangedBy      = LAST_CHANGED_BY;
+    }
+}
