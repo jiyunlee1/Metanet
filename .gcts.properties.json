@@ -1,0 +1,12 @@
+{
+  "name": "jiyunlee1-metanet",
+  "version": "1.0.0",
+  "description": "jiyunlee1-Metanet",
+  "repositoryLayout": {
+    "formatVersion": 5,
+    "format": "json",
+    "metaInformation": ".gctsmetadata/",
+    "tableContent": "true",
+    "subdirectory": "src/ "
+  }
+}
